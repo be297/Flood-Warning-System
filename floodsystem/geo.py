@@ -12,6 +12,21 @@ from .utils import sorted_by_key  # noqa
 from floodsystem.stationdata import build_station_list
 
 
+
+#Task 1B: sort stations by distance from the coordinate p
+from haversine import haversine 
+def stations_by_distance(stations, p):
+    distance_list = []
+    for i in stations:
+        distance_from_p = haversine(i.coord, p)
+        x = (i, distance_from_p)
+        distance_list.append(x)
+        distance_list_sorted = sorted(distance_list, key=lambda tup: tup[1])
+    return distance_list_sorted
+
+
+
+
 #Task 1D-1, this function returns the name of rivers with at least one monitoring station in a set
 def rivers_with_station(stations):
     rivers = set()
