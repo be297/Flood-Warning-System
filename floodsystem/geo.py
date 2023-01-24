@@ -10,20 +10,31 @@ from ctypes import util
 from gettext import install
 from .utils import sorted_by_key  # noqa
 from floodsystem.stationdata import build_station_list
-
+from haversine import haversine 
 
 
 #Task 1B: sort stations by distance from the coordinate p
-from haversine import haversine 
 def stations_by_distance(stations, p):
-    distance_list = []
+    distance_list = [] #empty list
     for i in stations:
-        distance_from_p = haversine(i.coord, p)
-        x = (i, distance_from_p)
+        distance_from_p = haversine(i.coord, p) #finds the distance of the station from p
+        y = (i.name, i.town)
+        x = (y, distance_from_p)
         distance_list.append(x)
-        distance_list_sorted = sorted(distance_list, key=lambda tup: tup[1])
+        distance_list_sorted = sorted(distance_list, key=lambda tup: tup[1]) #sorts list in order of distance
     return distance_list_sorted
+    
 
+
+#Task 1C: stations within radius
+def stations_within_radius(stations, centre, r):
+    stations_radius = []
+    for i in stations:
+        station_to_centre = haversine(i.coord, centre)
+        if station_to_centre < r:
+            stations_radius.append(i.name)
+            stations_radius.sort()
+    return stations_radius
 
 
 
