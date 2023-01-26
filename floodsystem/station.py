@@ -39,8 +39,9 @@ class MonitoringStation:
         d += "   typical range: {}".format(self.typical_range)
         return d
     
-    # Task 1F-2 A method that finds an inconsistent object and returns false if found
+   
     def typical_range_consistent(self):
+        """Task 1F-2 A method that finds an inconsistent object and returns false if found"""
         if self.typical_range == None:
             return False
         elif len(self.typical_range) != 2:
@@ -50,8 +51,9 @@ class MonitoringStation:
         else:
             return True
 
-# Task 1F-2 a function that returns a list of inconsistent station objects        
+      
 def inconsistent_typical_range_stations(stations):
+    """Task 1F-2 a function that returns a list of inconsistent station objects"""
     inconsistent_stations = []
     for i in stations:
         if i.typical_range_consistent() == False:

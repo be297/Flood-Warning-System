@@ -13,8 +13,9 @@ from floodsystem.stationdata import build_station_list
 from haversine import haversine 
 
 
-#Task 1B: sort stations by distance from the coordinate p
+
 def stations_by_distance(stations, p):
+    """Task 1B: sort stations by distance from the coordinate p"""
     distance_list = [] #empty list
     for i in stations:
         distance_from_p = haversine(i.coord, p) #finds the distance of the station from p
@@ -26,8 +27,9 @@ def stations_by_distance(stations, p):
     
 
 
-#Task 1C: stations within radius
+
 def stations_within_radius(stations, centre, r):
+    """Task 1C: stations within radius"""
     stations_radius = []
     for i in stations:
         station_to_centre = haversine(i.coord, centre)
@@ -38,8 +40,9 @@ def stations_within_radius(stations, centre, r):
 
 
 
-#Task 1D-1, this function returns the name of rivers with at least one monitoring station in a set
+
 def rivers_with_station(stations):
+    """Task 1D-1, this function returns the name of rivers with at least one monitoring station in a set"""
     rivers = set()
     for i in stations:
         rivers.add(i.river)
@@ -47,8 +50,9 @@ def rivers_with_station(stations):
 
 
 
-# Task 1D-2, this function returns a dictionary with rivers as the key and station objects as the items 
+
 def stations_by_river(stations):
+    """Task 1D-2, this function returns a dictionary with rivers as the key and station objects as the items"""
     rivers = (rivers_with_station(stations))
     rivers_dict = {} # Creating empty dictionary
     for i in rivers: # Creating empty lists with the rivers as keys
@@ -59,8 +63,9 @@ def stations_by_river(stations):
 
 
 
-# Task E, this function determines the N rivers with the greatest number of monitoring stations
+
 def rivers_by_station_number(stations, N):
+    """Task E, this function determines the N rivers with the greatest number of monitoring stations"""
     rivers_dict = stations_by_river(stations)
     rivers_num = [] #Empty list of tuples
     for i in rivers_dict:
