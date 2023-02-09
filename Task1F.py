@@ -9,15 +9,15 @@ from floodsystem.station import inconsistent_typical_range_stations
 def run():
     """Requirements for Task 1F"""
 
- # Build list of stations
-stations = build_station_list()
+    # Build list of stations
+    stations = build_station_list()
 
-# Build a list of inconsistent stations and print alphabetically
-inconsistent_stations = inconsistent_typical_range_stations(stations)  
-names = []
-for i in inconsistent_stations:
-    names.append(i.name)     
-print(sorted(names)) 
+    # Build a list of inconsistent stations and print alphabetically
+    inconsistent_stations = inconsistent_typical_range_stations(stations)  
+    names = []
+    for i in inconsistent_stations:
+        names.append(i.name)     
+    print(sorted(names)) 
 
 
 
