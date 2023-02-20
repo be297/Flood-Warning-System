@@ -18,7 +18,7 @@ def run():
     # Make a descended sorted list of stations above the tolerance and print
     tol_list = stations_level_over_threshold(stations, tol)
     for i in tol_list:
-        print (i[0].name,i[1] )
+        print (i[0].name, i[1])
     
 
 if __name__ == "__main__":
