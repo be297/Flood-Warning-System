@@ -1,20 +1,24 @@
 import datetime
 from floodsystem.analysis import polyfit
 from floodsystem.datafetcher import fetch_measure_levels
-from floodsystem.stationdata import build_station_list
+from floodsystem.flood import stations_highest_rel_level
+from floodsystem.plot import plot_water_level_with_fit
+from floodsystem.stationdata import build_station_list, update_water_levels
 
-# Build list of stations
-stations = build_station_list()
+def run():
+    """Requirements for Task 2F"""
+    p = 4
+     # Build list of stations
+    stations = build_station_list()
+    update_water_levels(stations)
+    dt=10
+    N_list = stations_highest_rel_level(stations, 5)
+    for i in N_list:
+         dates, levels = fetch_measure_levels(i[0].measure_id, dt=datetime.timedelta(days=dt))
+         plot_water_level_with_fit(i[0], dates, levels,p)
+    
 
-# Station name to find
-station_name = "Cam"
 
-# Find station
-station_cam = None
-for station in stations:
-    if station.name == station_name:
-        station_cam = station
-        break
-dt = 2
-dates, levels = fetch_measure_levels(station_cam.measure_id, dt=datetime.timedelta(days=dt))
-print(polyfit(dates, levels, 3))
+if __name__ == "__main__":
+    print("*** Task 2F: CUED Part IA Flood Warning System ***")
+    run()
