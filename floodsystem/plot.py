@@ -1,6 +1,9 @@
+import matplotlib
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 import numpy as np
+
+from floodsystem.analysis import polyfit
 
 def plot_water_levels(station, dates, levels):
     """2E - This function returns a graph showing the water levels for a given station in the past days"""
@@ -23,4 +26,9 @@ def plot_water_levels(station, dates, levels):
     plt.legend()
 
     return plt.show()
+
+def plot_water_level_with_fit(station, dates, levels,p):
+    poly, d0 = polyfit(dates, levels, p)
+    x = matplotlib.dates.date2num(dates)
+    
     
