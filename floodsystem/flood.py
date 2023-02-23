@@ -7,7 +7,7 @@ from floodsystem.station import inconsistent_typical_range_stations
 
 
 def stations_level_over_threshold(stations, tol):
-    """Task 2B: asses flood risk by level"""
+    """Task 2B: assess flood risk by level"""
     threshold_list = []
     for i in stations:
         if i.relative_water_level() != None and i.relative_water_level() > tol:

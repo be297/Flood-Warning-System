@@ -30,7 +30,7 @@ def plot_water_levels(station, dates, levels):
 def plot_water_level_with_fit(station, dates, levels,p):
     poly, d0 = polyfit(dates, levels, p)
     x = matplotlib.dates.date2num(dates)
-    plt.plot(dates, poly(x-d0))
+    plt.plot(dates, poly(x-d0), label = "Polyfit")
     plt.plot(dates, levels, label = "Water Levels")
     x = np.array([dates[0], dates[-1]])
     y = np.array([station.typical_range[0], station.typical_range[0]])

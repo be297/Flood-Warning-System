@@ -11,11 +11,12 @@ def run():
      # Build list of stations
     stations = build_station_list()
     update_water_levels(stations)
-    dt=10
+    dt=2
     N_list = stations_highest_rel_level(stations, 5)
     for i in N_list:
          dates, levels = fetch_measure_levels(i[0].measure_id, dt=datetime.timedelta(days=dt))
          plot_water_level_with_fit(i[0], dates, levels,p)
+    print(dates)
     
 
 
