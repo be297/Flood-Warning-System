@@ -33,6 +33,6 @@ def run():
 
  
     
-if _name_ == "_main_":
+if __name__ == "_main_":
     print("* Task 2G: CUED Part IA Flood Warning System *")
     run()
